@@ -6,6 +6,11 @@ The piwik_analytics gem provides an easy way to include Piwik into your applicat
 By default it will output the synchronous piwik tracking code for every page
 (given that it is configured correctly).
 
+== Features
+
+* Choose between async and normal tracking code.
+* [Piwik ecommerce](http://piwik.org/docs/ecommerce-analytics/#toc-ecommerce-tracking) tags can be set from your controllers.
+
 == Installation
 
 Add `piwik_analytics` to Gemfile:
@@ -30,6 +35,19 @@ the config file itself.
 Inside your `application.html.erb` (or haml, slim) simply add
 
     <%= piwik_tracking_tag %>
+
+=== Ecommerce
+
+Inside your `OrdersController#confirm` action (Or any action invoked when the user has ordered and issued
+a payment), call a few helpers to set ecommerce tags:
+
+    order.products.each do |product|
+      piwik_analytics_add_ecommerce_item(product.sku, product.name, product.categories, product.price, quantity)
+    end
+    piwik_analytics_track_ecommerce_order(order.id, order.grand_total, order.sub_total, order.tax, order.shipping, order.discount)
+
+With a properly configured piwik, you will now see the order showing up in your statistics. Refer
+to the documentation of `ecommerce.rb` for the exact details of the parameters.
 
 Enjoy :)
 
