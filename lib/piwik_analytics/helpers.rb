@@ -4,7 +4,9 @@ module PiwikAnalytics
       config = PiwikAnalytics.configuration
       return if config.disabled?
 
-      if config.use_async?
+      if config.use_ecommerce?
+        file = "piwik_analytics/piwik_tracking_tag_ecommerce"
+      elsif config.use_async?
         file = "piwik_analytics/piwik_tracking_tag_async"
       else
         file = "piwik_analytics/piwik_tracking_tag"
