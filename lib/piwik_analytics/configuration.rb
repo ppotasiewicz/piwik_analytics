@@ -27,6 +27,14 @@ module PiwikAnalytics
     end
 
     #
+    # Whether or not ecommerce is enabled for this site.
+    # Defaults to false
+    #
+    def use_ecommerce?
+      @use_ecommerce ||= (user_configuration_from_key('use_ecommerce') || false)
+    end
+
+    #
     # Whether or not to disable Piwik.
     # Defaults to false.
     #
