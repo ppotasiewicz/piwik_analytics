@@ -4,8 +4,12 @@ module PiwikAnalytics
       config = PiwikAnalytics.configuration
       return if config.disabled?
 
+      locals = {:url => config.url, :id_site => config.id_site}
+
       if config.use_ecommerce?
         file = "piwik_analytics/piwik_tracking_tag_ecommerce"
+        locals[:ecommerce_items] = @ecommerce_items || []
+        locals[:ecommerce_order] = @ecommerce_order
       elsif config.use_async?
         file = "piwik_analytics/piwik_tracking_tag_async"
       else
@@ -13,8 +17,9 @@ module PiwikAnalytics
       end
       render({
         :file => file,
-        :locals => {:url => config.url, :id_site => config.id_site}
+        :locals => locals
       })
     end
+
   end
 end

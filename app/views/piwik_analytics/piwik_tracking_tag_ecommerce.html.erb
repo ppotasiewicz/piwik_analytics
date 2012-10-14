@@ -6,11 +6,11 @@
   try {
     var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", <%= id_site %>);
     piwikTracker.trackPageView();
-    <% @ecommerce_items.each do |ecommerce_item| %>
-        piwikTracker.addEcommerceItem(<%= ecommerce_item.as_js_params %>);
+    <% ecommerce_items.each do |ecommerce_item| %>
+        piwikTracker.addEcommerceItem(<%= raw ecommerce_item.as_js_params %>);
     <% end %>
-    <% unless @ecommerce_order.nil? %>
-      piwikTracker.trackEcommerceOrder(<%= @ecommerce_order.as_js_params %>);
+    <% unless ecommerce_order.nil? %>
+      piwikTracker.trackEcommerceOrder(<%= raw ecommerce_order.as_js_params %>);
     <% end %>
     piwikTracker.enableLinkTracking();
   } catch( err ) {}

@@ -14,6 +14,8 @@ module PiwikAnalytics
 
     initializer "piwik_analytics.init", :before=> :load_config_initializers do
       require "piwik_analytics/helpers"
+      require "piwik_analytics/piwik_controller"
+      require "piwik_analytics/ecommerce"
       load "piwik_analytics/init.rb"
     end
   end
