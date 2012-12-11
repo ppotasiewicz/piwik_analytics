@@ -51,14 +51,4 @@ describe PiwikAnalytics::Helpers do
       end
     end
   end
-
-  context 'tracking api' do
-    it 'should have a piwik_tracker method' do
-      @double.should respond_to(:piwik_tracker)
-    end
-    it 'should return a PiwikTracker' do
-      PiwikAnalytics.stub(:piwik_tracker).and_return(PiwikAnalytics::PiwikTracker.new)
-      @double.piwik_tracker.should be_an_instance_of(PiwikAnalytics::PiwikTracker)
-    end
-  end
 end

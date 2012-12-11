@@ -4,6 +4,8 @@ module PiwikAnalytics
       config = PiwikAnalytics.configuration
       return if config.disabled?
 
+      tracker = PiwikAnalytics.piwik_tracker
+
       if config.use_async?
         file = "piwik_analytics/piwik_tracking_tag_async"
       else
@@ -11,12 +13,8 @@ module PiwikAnalytics
       end
       render({
         :file => file,
-        :locals => {:url => config.url, :id_site => config.id_site}
+        :locals => {:url => config.url, :id_site => config.id_site, :tracker => tracker}
       })
-    end
-
-    def piwik_tracker
-      PiwikAnalytics.piwik_tracker
     end
   end
 end
