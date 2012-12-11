@@ -5,10 +5,13 @@ class HelpersDouble
 end
 
 describe PiwikAnalytics::Helpers do
+  before(:each) do
+    @double = HelpersDouble.new
+  end
+
   describe "#piwik_tracking_tag" do
     before(:each) do
       @config = mock("Configuration").as_null_object
-      @double = HelpersDouble.new
     end
 
     context "disabled" do
@@ -45,6 +48,12 @@ describe PiwikAnalytics::Helpers do
         @double.should_receive(:render).with(hash_including(:file => 'piwik_analytics/piwik_tracking_tag'))
         @double.piwik_tracking_tag
       end
+    end
+  end
+
+  context 'tracking api' do
+    it 'should have a piwik_tracker method' do
+      @double.should respond_to(:piwik_tracker)
     end
   end
 end

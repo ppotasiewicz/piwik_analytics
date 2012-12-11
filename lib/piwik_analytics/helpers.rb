@@ -14,5 +14,8 @@ module PiwikAnalytics
         :locals => {:url => config.url, :id_site => config.id_site}
       })
     end
+
+    def piwik_tracker
+    end
   end
 end
