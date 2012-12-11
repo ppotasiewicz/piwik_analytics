@@ -11,5 +11,15 @@ describe PiwikAnalytics::PiwikTracker do
       @obj.document_title="foo"
       @obj.document_title.should eq "foo"
     end
+
+    it 'should have a goal setter' do
+      @obj.should respond_to :goal
+
+      @obj.goal = 1
+      @obj.goal.should eq 1
+
+      @obj.goal = {:id => 1, :price => 123 }
+      @obj.goal.should eq({:id => 1, :price => 123})
+    end
   end
 end
