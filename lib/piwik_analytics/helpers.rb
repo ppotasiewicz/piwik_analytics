@@ -16,6 +16,7 @@ module PiwikAnalytics
     end
 
     def piwik_tracker
+      PiwikAnalytics::PiwikTracker.new
     end
   end
 end

@@ -1,4 +1,5 @@
 require "piwik_analytics/helpers"
+require "piwik_analytics/piwik_tracker"
 
 class HelpersDouble
   include PiwikAnalytics::Helpers
@@ -54,6 +55,9 @@ describe PiwikAnalytics::Helpers do
   context 'tracking api' do
     it 'should have a piwik_tracker method' do
       @double.should respond_to(:piwik_tracker)
+    end
+    it 'should return a PiwikTracker' do
+      @double.piwik_tracker.should be_an_instance_of(PiwikAnalytics::PiwikTracker)
     end
   end
 end
