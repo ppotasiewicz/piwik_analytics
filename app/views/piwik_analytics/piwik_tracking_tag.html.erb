@@ -5,6 +5,9 @@
   </script><script type="text/javascript">
   try {
     var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", <%= id_site %>);
+    <% if tracker.document_title %>
+      piwikTracker.setDocumentTitle("<%= tracker.document_title %>");
+    <% end %>
     piwikTracker.trackPageView();
     piwikTracker.enableLinkTracking();
   } catch( err ) {}
