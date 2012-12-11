@@ -57,6 +57,7 @@ describe PiwikAnalytics::Helpers do
       @double.should respond_to(:piwik_tracker)
     end
     it 'should return a PiwikTracker' do
+      PiwikAnalytics.stub(:piwik_tracker).and_return(PiwikAnalytics::PiwikTracker.new)
       @double.piwik_tracker.should be_an_instance_of(PiwikAnalytics::PiwikTracker)
     end
   end
