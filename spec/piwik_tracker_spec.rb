@@ -22,4 +22,16 @@ describe PiwikAnalytics::PiwikTracker do
       @obj.goal.should eq({:id => 1, :price => 123})
     end
   end
+
+  context '_as_js getters' do
+    it 'should ave a goal getter' do
+      @obj.should respond_to :goal_as_js
+
+      @obj.goal = 1
+      @obj.goal_as_js.should eq "1"
+
+      @obj.goal = {:id => 1, :price => 123 }
+      @obj.goal_as_js.should eq("1, 123")
+    end
+  end
 end

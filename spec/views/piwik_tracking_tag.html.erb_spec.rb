@@ -45,5 +45,26 @@ describe "views/piwik_tracking_tag.html.erb" do
         @template.result(binding).should_not =~ /setDocumentTitle/
       end
     end
+
+    context "goal is set" do
+      it 'should render simple goal' do
+        @tracker.goal = 7
+        tracker = PiwikAnalytics.piwik_tracker
+        @template.result(binding).should =~ /piwikTracker\.trackGoal\(7\);/
+      end
+      it 'should render a goal with custom revenue' do
+        @tracker.goal = {:id => 7, :price => 123}
+        tracker = PiwikAnalytics.piwik_tracker
+        @template.result(binding).should =~ /piwikTracker\.trackGoal\(7, 123\);/
+      end
+    end
+
+    context "goal is not set" do
+      it 'should not render a goal' do
+        @tracker.goal = nil
+        tracker = PiwikAnalytics.piwik_tracker
+        @template.result(binding).should_not =~ /trackGoal/
+      end
+    end
   end
 end

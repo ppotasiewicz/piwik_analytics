@@ -8,6 +8,9 @@
     <% if tracker.document_title %>
       piwikTracker.setDocumentTitle("<%= tracker.document_title %>");
     <% end %>
+    <% if tracker.goal %>
+      piwikTracker.trackGoal(<%= tracker.goal_as_js %>);
+    <% end %>
     piwikTracker.trackPageView();
     piwikTracker.enableLinkTracking();
   } catch( err ) {}
