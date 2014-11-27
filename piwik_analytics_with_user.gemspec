@@ -1,11 +1,11 @@
 spec = Gem::Specification.new do |s|
-  s.name              = 'piwik_analytics'
-  s.version           = '1.0.2'
+  s.name              = 'piwik_analytics_with_user'
+  s.version           = '1.1.1'
   s.date              = Time.now.strftime "%Y-%m-%d"
-  s.author            = 'Fabian Becker'
-  s.email             = 'halfdan@xnorfz.de'
-  s.homepage          = 'https://github.com/halfdan/piwik_analytics/'
-  s.summary           = "[Rails] Easily include Piwik tracking in your Rails application."
+  s.author            = 'Pawel Potasiewicz'
+  s.email             = 'web.potasiewicz@gmail.com'
+  s.homepage          = 'https://github.com/ppotasiewicz/piwik_analytics.git'
+  s.summary           = "[Rails] Easily include Piwik tracking with user id in your Rails application."
 
   s.description = <<-DESC
     The piwik_analytics gem provides an easy way to include Piwik into your application.

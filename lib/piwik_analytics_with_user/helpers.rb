@@ -1,13 +1,13 @@
-module PiwikAnalytics
+module PiwikAnalyticsWithUser
   module Helpers
     def piwik_tracking_tag(id_user = nil)
-      config = PiwikAnalytics.configuration
+      config = PiwikAnalyticsWithUser.configuration
       return if config.disabled?
 
       if config.use_async?
-        file = "piwik_analytics/piwik_tracking_tag_async"
+        file = "piwik_analytics_with_user/piwik_tracking_tag_async"
       else
-        file = "piwik_analytics/piwik_tracking_tag"
+        file = "piwik_analytics_with_user/piwik_tracking_tag"
       end
       render({
         :file => file,

@@ -1,5 +1,5 @@
 
-module PiwikAnalytics
+module PiwikAnalyticsWithUser
   class Configuration
 
     #
