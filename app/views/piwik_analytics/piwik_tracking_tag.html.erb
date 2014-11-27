@@ -7,7 +7,7 @@
     try {
         var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", <%= id_site %>);
         <% unless id_user.nil? %>
-            piwikTracker.setUserId(<%= id_user %>);
+            piwikTracker.setUserId('<%= id_user %>');
         <%end%>
         piwikTracker.trackPageView();
         piwikTracker.enableLinkTracking();
