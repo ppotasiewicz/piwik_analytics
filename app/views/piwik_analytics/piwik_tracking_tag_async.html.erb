@@ -5,9 +5,9 @@
     _paq.push(['setUserId', '<%=id_user%>']);
   <%end%>
   (function(){
-    var u = (("https:" == document.location.protocol) ? "https://<%= url %>/" : "http://<%= url %>/");
+    var u=(("https:" == document.location.protocol) ? "https://<%= url %>/" : "http://<%= url %>/");
     _paq.push(['setSiteId', <%= id_site %>]);
-    _paq.push(['setTrackerUrl', u + 'piwik.php']);
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
     _paq.push(['trackPageView']);
     var d=document,
       g=d.createElement('script'),
